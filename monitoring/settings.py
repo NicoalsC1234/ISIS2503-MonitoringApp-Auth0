@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'measurements',
     'variables',
+    'boletines',
     'social_django',
 ]
 
@@ -99,11 +100,11 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'name_db',
-         'USER': 'user_db',
-         'PASSWORD': 'user_password',
-         'HOST': 'localhost',
-         'PORT': '',
+         'NAME': 'authenticationdb',
+         'USER': 'autoUser',
+         'PASSWORD': 'ISIS2503',
+         'HOST': 'authenticationdb.cqehsm9w5dcm.us-east-1.rds.amazonaws.com',
+         'PORT': '5432',
      }
  }
 
