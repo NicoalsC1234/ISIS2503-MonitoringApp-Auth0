@@ -27,6 +27,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://isis2503sprint3-juanandres44.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F3.95.212.161:8000"
+
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN ='isis2503sprint3-juanandres44.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY ='uSUYywrnnfjsn78bvcC4faag2h1EaPms'
+SOCIAL_AUTH_AUTH0_SECRET ='J9lkOqji-zLJBWhkW05N2ZsKeZmX-YKzjuBxc0i-XDJPeYdIJ5hLedgQ9Bq-qS8C'
+
+SOCIAL_AUTH_AUTH0_SCOPE=[
+ 'openid', 
+ 'profile'  
+]
+
+AUTHENTICATION_BACKENDS={
+ 'monitoring.auth0backend.Auth0', 
+ 'django.contrib.auth.backends.ModelBackend',  
+}
+
+
 
 # Application definition
 
@@ -39,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'measurements',
     'variables',
+    'social_django',
 ]
 
 MIDDLEWARE = [
