@@ -29,6 +29,11 @@ def reportes_create(request):
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize =A4)
 
+    c.setLineWidth(.3)
+    c.setFont('Helvetica',22)
+    c.drawString(30,750,'Uniandes')
+    c.setFont('Helvetica',12)
+    c.drawString(30,735,'Reporte')
 
     c.setFont('Helvetica-Bold', 12)
     c.drawString(480,750,"08/04/2021")
@@ -40,14 +45,14 @@ def reportes_create(request):
     styleBH.fontSize = 10
 
     numero = Paragraph('''No.''',styleBH)
-    alumno = Paragraph('''Alumno''',styleBH)
-    b1 = Paragraph('''Materia1''',styleBH)
-    b2 = Paragraph('''Materia2''', styleBH)
-    b3 = Paragraph('''Materia3''', styleBH)
-    total = Paragraph('''TOTAL''', styleBH)
+    alumno = Paragraph('''Profesor''',styleBH)
+    b1 = Paragraph('''Certificado ingles''',styleBH)
+    b2 = Paragraph('''Certificado español''', styleBH)
+    b3 = Paragraph('''Certificado frances''', styleBH)
+    total = Paragraph('''Legitimo''', styleBH)
     data = [[numero,alumno,b1,b2,b3,total]]
 
-    alumnos = [{'#':'1','nombre':'Nicolas Chalee Guerrero', 'b1':'3.4','b2':'2.2','b3':'4.5','total':'3.36'}]
+    alumnos = [{'#':'1','nombre':'Nicolas Chalee Guerrero', 'b1':'IELTS C1','b2':'Nativa','b3':'DEFL B2','total':'Aprobado'}]
 
     styles = getSampleStyleSheet()
     styleN = styles["BodyText"]
@@ -61,8 +66,10 @@ def reportes_create(request):
         data.append(this_student)
         high = high -18
 
-    table = Table(data, colWidths=[1.9*inch, 9.5*inch,1.9*inch,1.9*inch,1.9*inch,1.9*inch])
-    table.setStyle(TableStyle([('INNERGRID',(0,0),(-1,-1),0.25, colors.black),('BOX',(0,0),(-1,-1),0.25, colors.black),]))
+    table = Table(data, colWidths=[0.7*inch, 3.7*inch,0.7*inch,0.7*inch,0.7*inch,0.7*inch])
+    table.setStyle(TableStyle([
+       ('INNERGRID',(0,0),(-1,-1),0.25, colors.black),
+       ('BOX',(0,0),(-1,-1),0.25, colors.black),]))
 
     table.wrapOn(c,width,height)
     table.drawOn(c,30,high)
