@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'measurements',
     'variables',
     'boletines',
+    'reportes',
     'social_django',
 ]
 
